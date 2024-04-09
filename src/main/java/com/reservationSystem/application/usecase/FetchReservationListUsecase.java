@@ -1,7 +1,8 @@
 package com.reservationSystem.application.usecase;
 
 import com.reservationSystem.domain.model.aggregate.ReservationListAggregate;
-import com.reservationSystem.domain.repository.ReservationListAggregateRepository;
+import com.reservationSystem.infrastructure.repository.ReservationListAggregateRepository;
+
 import org.springframework.stereotype.Service;
 import java.util.List;
 

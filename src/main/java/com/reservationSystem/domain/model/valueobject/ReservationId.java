@@ -7,5 +7,4 @@ public record ReservationId(Integer value) {
         }
         return new ReservationId(value);
     }
-
 }

@@ -1,10 +1,11 @@
 package com.reservationSystem.domain.service;
 
 import com.reservationSystem.domain.model.entity.Reservation;
-import com.reservationSystem.domain.repository.ReservationRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.reservationSystem.domain.model.valueobject.ReservationId;
+import com.reservationSystem.infrastructure.repository.ReservationRepository;
 
 import java.util.List;
 

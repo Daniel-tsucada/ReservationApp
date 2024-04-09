@@ -1,13 +1,9 @@
 package com.reservationSystem.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 
 @Getter
 public abstract class SingleKeyBaseEntity<ID> {
-    // JsonIgnoreアノテーションを付与することで、JSON変換時にIDフィールドを無視する
-    @JsonIgnore
     protected ID id;
 
     protected SingleKeyBaseEntity() {

@@ -1,4 +1,4 @@
-package com.reservationSystem.domain.repository;
+package com.reservationSystem.infrastructure.repository;
 
 import com.reservationSystem.domain.model.aggregate.ReservationListAggregate;
 import java.util.List;
