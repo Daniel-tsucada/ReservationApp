@@ -1,0 +1,41 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reservationSystem.infrastructure.repository.ReservationRepository">
+    <!-- resultMap定義 -->
+    <resultMap id="ReservationResult" type="com.reservationSystem.domain.model.entity.Reservation">
+        <id property="id" column="reservation_id" typeHandler="com.reservationSystem.domain.model.valueobject.ReservationIdTypeHandler"/>
+        <result property="customerId" column="customer_id" typeHandler="com.reservationSystem.domain.model.valueobject.CustomerIdTypeHandler"/>
+        <result property="serviceId" column="service_id" typeHandler="com.reservationSystem.domain.model.valueobject.ServiceIdTypeHandler"/>
+        <result property="reservationDate" column="reservation_date"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="ReservationResult">
+        SELECT
+            r.reservation_id,
+            r.customer_id,
+            r.service_id,
+            r.reservation_date,
+            r.status
+        FROM reservations r
+    </select>
+
+    <insert id="createReservation">
+        INSERT INTO reservations (reservation_id, customer_id, service_id, reservation_date, status)
+        VALUES (#{id.value}, #{customerId.value}, #{serviceId.value}, #{reservationDate}, #{status, typeHandler=org.apache.ibatis.type.EnumTypeHandler})
+    </insert>
+
+    <update id="updateReservation">
+        UPDATE reservations
+        SET
+            customer_id = #{customerId.value},
+            service_id = #{serviceId.value},
+            reservation_date = #{reservationDate},
+            status = #{status, typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+        WHERE reservation_id = #{id.value}
+    </update>
+
+    <delete id="deleteReservation">
+        DELETE FROM reservations
+        WHERE reservation_id = #{id.value}
+    </delete>
+</mapper>

@@ -1,0 +1,36 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reservationSystem.infrastructure.repository.ReservationListAggregateRepository">
+    <resultMap id="ReservationListAggregateResult" type="com.reservationSystem.domain.model.aggregate.ReservationListAggregate">
+        <id property="id.value" column="r.reservation_id"/>
+        <result property="customerId.value" column="c.customer_id"/>
+        <result property="storeId.value" column="s.store_id"/>
+        <result property="serviceId.value" column="se.service_id"/>
+        <result property="customerName" column="c.customer_name"/>
+        <result property="customerEmail" column="c.email"/>
+        <result property="customerPhone" column="c.phone"/>
+        <result property="storeName" column="s.store_name"/>
+        <result property="storeAddress" column="s.address"/>
+        <result property="serviceName" column="se.service_name"/>
+        <result property="serviceDuration.value" column="se.duration"/>
+        <result property="servicePrice.value" column="se.price"/>
+    </resultMap>
+    <select id="findAllReservationsWithDetails" resultMap="ReservationListAggregateResult">
+    SELECT
+        r.reservation_id,
+        c.customer_id,
+        s.store_id,
+        se.service_id,
+        c.customer_name,
+        c.email,
+        c.phone,
+        s.store_name,
+        s.address,
+        se.service_name,
+        se.duration,
+        se.price
+    FROM reservations r
+    JOIN customers c ON r.customer_id = c.customer_id
+    JOIN services se ON r.service_id = se.service_id
+    JOIN stores s ON se.store_id = s.store_id
+</select>
+</mapper>
