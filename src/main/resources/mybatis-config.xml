@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <typeHandlers>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.IntegerValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.StoreId"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.IntegerValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.ServiceId"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.IntegerValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.SaleId"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.IntegerValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.ReservationId"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.IntegerValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.Duration"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.IntegerValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.CustomerId"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.StringValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.Phone"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.StringValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.Email"/>
-        <typeHandler handler="com.reservationSystem.domain.model.valueobject.BigDecimalValueObjectTypeHandler" javaType="com.reservationSystem.domain.model.valueobject.Price"/>
-    </typeHandlers>
+<typeHandlers>
+<!-- integer -->
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.ReservationId"/>
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.CustomerId"/>
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.ServiceId"/>
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.Duration"/>
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordTypeHandler"
+                    javaType="com.reservationSystem.domain.model.valueobject.StoreId"/>
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.SaleId"/>
+
+<!-- string -->
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordStringTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.Email"/>
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordStringTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.Phone"/>
+
+<!-- bigdecimal -->
+    <typeHandler handler="com.reservationSystem.domain.model.valueobject.RecordBigDecimalTypeHandler"
+                 javaType="com.reservationSystem.domain.model.valueobject.Price"/>
+</typeHandlers>
+
     <mappers>
         <mapper resource="com/reservationSystem/infrastructure/repository/ReservationRepository.xml"/>
         <mapper resource="com/reservationSystem/infrastructure/repository/ReservationListAggregateRepository.xml"/>

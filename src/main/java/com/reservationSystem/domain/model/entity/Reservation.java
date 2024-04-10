@@ -1,5 +1,6 @@
 package com.reservationSystem.domain.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.reservationSystem.domain.model.SingleKeyBaseEntity;
 import com.reservationSystem.domain.model.valueobject.CustomerId;
 import com.reservationSystem.domain.model.valueobject.ReservationId;
@@ -10,6 +11,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
+@JsonPropertyOrder({ "reservationId", "customerId", "serviceId", "reservationDate", "status" })
 public class Reservation extends SingleKeyBaseEntity<ReservationId> {
     private CustomerId customerId;
     private ServiceId serviceId;
@@ -24,11 +26,13 @@ public class Reservation extends SingleKeyBaseEntity<ReservationId> {
         return id.value();
     }
 
-    public Integer getCustomerId() {
+    // Integer型を返すように修正
+    public int getCustomerId() {
         return customerId.value();
     }
 
-    public Integer getServiceId() {
+    // Integer型を返すように修正
+    public int getServiceId() {
         return serviceId.value();
     }
 

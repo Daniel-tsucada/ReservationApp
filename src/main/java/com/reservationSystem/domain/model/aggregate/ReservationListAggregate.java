@@ -5,6 +5,8 @@ import com.reservationSystem.domain.model.valueobject.CustomerId;
 import com.reservationSystem.domain.model.valueobject.StoreId;
 import com.reservationSystem.domain.model.valueobject.ServiceId;
 import com.reservationSystem.domain.model.valueobject.Duration;
+import com.reservationSystem.domain.model.valueobject.Email;
+import com.reservationSystem.domain.model.valueobject.Phone;
 import com.reservationSystem.domain.model.valueobject.Price;
 import lombok.Getter;
 
@@ -15,8 +17,8 @@ public class ReservationListAggregate {
     private final StoreId storeId;
     private final ServiceId serviceId;
     private final String customerName;
-    private final String customerEmail;
-    private final String customerPhone;
+    private final Email email;
+    private final Phone phone;
     private final String storeName;
     private final String storeAddress;
     private final String serviceName;
@@ -24,7 +26,7 @@ public class ReservationListAggregate {
     private final Price servicePrice;
 
     public ReservationListAggregate(ReservationId id, CustomerId customerId, StoreId storeId, ServiceId serviceId,
-            String customerName, String customerEmail, String customerPhone,
+            String customerName, Email email, Phone phone,
             String storeName, String storeAddress, String serviceName,
             Duration serviceDuration, Price servicePrice) {
         this.id = id;
@@ -32,8 +34,8 @@ public class ReservationListAggregate {
         this.storeId = storeId;
         this.serviceId = serviceId;
         this.customerName = customerName;
-        this.customerEmail = customerEmail;
-        this.customerPhone = customerPhone;
+        this.email = email;
+        this.phone = phone;
         this.storeName = storeName;
         this.storeAddress = storeAddress;
         this.serviceName = serviceName;

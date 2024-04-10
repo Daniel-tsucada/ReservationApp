@@ -1,9 +1,12 @@
 package com.reservationSystem.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 
 @Getter
 public abstract class SingleKeyBaseEntity<ID> {
+    @JsonIgnore
     protected ID id;
 
     protected SingleKeyBaseEntity() {
