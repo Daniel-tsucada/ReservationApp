@@ -1,10 +1,11 @@
 package com.reservationSystem.application.usecase;
 
-import com.reservationSystem.domain.model.aggregate.ReservationListAggregate;
+import com.reservationSystem.application.reservation.reservationAggregateOutput;
 import com.reservationSystem.infrastructure.repository.ReservationListAggregateRepository;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FetchReservationListUsecase {
@@ -14,7 +15,21 @@ public class FetchReservationListUsecase {
         this.repository = repository;
     }
 
-    public List<ReservationListAggregate> execute() {
-        return repository.findAllReservationsWithDetails();
+    public List<reservationAggregateOutput> execute() {
+        return repository.findAllReservationsWithDetails().stream()
+                .map(aggregate -> new reservationAggregateOutput(
+                        aggregate.getId(),
+                        aggregate.getCustomerId(),
+                        aggregate.getStoreId(),
+                        aggregate.getServiceId(),
+                        aggregate.getCustomerName(),
+                        aggregate.getEmail(),
+                        aggregate.getPhone(),
+                        aggregate.getStoreName(),
+                        aggregate.getStoreAddress(),
+                        aggregate.getServiceName(),
+                        aggregate.getServiceDuration(),
+                        aggregate.getServicePrice()))
+                .collect(Collectors.toList());
     }
 }
