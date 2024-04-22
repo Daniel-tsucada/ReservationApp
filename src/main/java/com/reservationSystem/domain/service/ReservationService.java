@@ -1,13 +1,14 @@
 package com.reservationSystem.domain.service;
 
 import com.reservationSystem.domain.model.entity.Reservation;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.reservationSystem.domain.model.valueobject.ReservationId;
 import com.reservationSystem.infrastructure.repository.ReservationRepository;
+import com.reservationSystem.application.reservation.ReservationOutput;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
@@ -19,7 +20,7 @@ public class ReservationService {
 
     @Transactional
     public void createReservation(Reservation reservation) {
-        reservationRepository.create(reservation);
+        reservationRepository.createReservation(reservation);
     }
 
     @Transactional
@@ -33,7 +34,15 @@ public class ReservationService {
     }
 
     @Transactional(readOnly = true)
-    public List<Reservation> getReservations() {
-        return reservationRepository.findAll();
+    public List<ReservationOutput> getReservationOutputs() {
+        return reservationRepository.findAll().stream()
+                .map(reservation -> ReservationOutput.builder()
+                        .id(reservation.getId())
+                        .customerId(reservation.getCustomerId())
+                        .serviceId(reservation.getServiceId())
+                        .reservationDate(reservation.getReservationDate())
+                        .status(reservation.getStatus())
+                        .build())
+                .collect(Collectors.toList());
     }
 }

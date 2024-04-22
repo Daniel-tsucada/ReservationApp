@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.reservationSystem.domain.model.valueobject.ReservationId;
+import com.reservationSystem.application.reservation.ReservationOutput;
 
 import java.util.List;
 
@@ -37,8 +38,8 @@ public class ReservationController {
         }
 
         @GetMapping("/all")
-        public ResponseEntity<List<Reservation>> getReservations() {
-                List<Reservation> reservations = reservationService.getReservations();
+        public ResponseEntity<List<ReservationOutput>> getReservations() {
+                List<ReservationOutput> reservations = reservationService.getReservationOutputs();
                 return new ResponseEntity<>(reservations, HttpStatus.OK);
         }
 }

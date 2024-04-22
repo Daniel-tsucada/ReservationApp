@@ -1,6 +1,8 @@
 package com.reservationSystem.domain.model.valueobject;
 
-public record Duration(Integer value) {
+import com.fasterxml.jackson.annotation.JsonValue;
+
+public record Duration(@JsonValue Integer value) {
     public static Duration of(Integer value) {
         if (value == null || value <= 0) {
             throw new IllegalArgumentException("Invalid duration");

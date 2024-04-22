@@ -1,6 +1,8 @@
 package com.reservationSystem.domain.model.valueobject;
 
-public record CustomerId(Integer value) {
+import com.fasterxml.jackson.annotation.JsonValue;
+
+public record CustomerId(@JsonValue Integer value) {
     public static CustomerId of(Integer value) {
         if (value == null || value <= 0) {
             throw new IllegalArgumentException("Invalid customer ID");

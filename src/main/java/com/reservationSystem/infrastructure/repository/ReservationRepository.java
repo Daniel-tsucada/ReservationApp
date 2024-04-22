@@ -9,7 +9,7 @@ import com.reservationSystem.domain.model.valueobject.ReservationId;
 
 @Mapper
 public interface ReservationRepository {
-    void create(Reservation reservation);
+    void createReservation(Reservation reservation); // メソッド名を変更
 
     void update(Reservation reservation);
 

@@ -16,6 +16,6 @@ public class CreateReservationUseCase {
 
     @Transactional
     public void execute(Reservation reservation) {
-        reservationRepository.create(reservation);
+        reservationRepository.createReservation(reservation);
     }
 }
