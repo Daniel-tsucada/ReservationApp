@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
-public class RecordStringTypeHandler<T extends Record> extends BaseTypeHandler<T> {
+public class RecordStringTypeHandler<T extends ValueObject<String>> extends BaseTypeHandler<T> {
 
     private final Method valueMethod;
     private final Method ofMethod;

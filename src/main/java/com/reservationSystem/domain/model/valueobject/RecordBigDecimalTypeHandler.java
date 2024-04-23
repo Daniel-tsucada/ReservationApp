@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
-public class RecordBigDecimalTypeHandler<T extends Record> extends BaseTypeHandler<T> {
+public class RecordBigDecimalTypeHandler<T extends ValueObject<BigDecimal>> extends BaseTypeHandler<T> {
 
     private final Method valueMethod;
     private final Method ofMethod;
