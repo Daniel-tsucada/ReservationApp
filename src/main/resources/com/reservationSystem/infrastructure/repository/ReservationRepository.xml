@@ -2,9 +2,9 @@
 <mapper namespace="com.reservationSystem.infrastructure.repository.ReservationRepository">
     <!-- resultMap定義 -->
 <resultMap id="ReservationResult" type="com.reservationSystem.domain.model.entity.Reservation">
-    <id property="id" column="reservation_id" javaType="com.reservationSystem.domain.model.valueobject.ReservationId"/>
-    <result property="customerId" column="customer_id" javaType="com.reservationSystem.domain.model.valueobject.CustomerId"/>
-    <result property="serviceId" column="service_id" javaType="com.reservationSystem.domain.model.valueobject.ServiceId"/>
+    <id property="id" column="reservation_id" typeHandler="com.reservationSystem.domain.model.valueobject.ValueObjectTypeHandler"/>
+    <result property="customerId" column="customer_id" typeHandler="com.reservationSystem.domain.model.valueobject.ValueObjectTypeHandler"/>
+    <result property="serviceId" column="service_id" typeHandler="com.reservationSystem.domain.model.valueobject.ValueObjectTypeHandler"/>
     <result property="reservationDate" column="reservation_date"/>
     <result property="status" column="status"/>
 </resultMap>
