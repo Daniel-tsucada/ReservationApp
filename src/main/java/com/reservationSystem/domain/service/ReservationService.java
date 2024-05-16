@@ -34,15 +34,7 @@ public class ReservationService {
     }
 
     @Transactional(readOnly = true)
-    public List<ReservationOutput> getReservationOutputs() {
-        return reservationRepository.findAll().stream()
-                .map(reservation -> ReservationOutput.builder()
-                        .id(reservation.getId())
-                        .customerId(reservation.getCustomerId())
-                        .serviceId(reservation.getServiceId())
-                        .reservationDate(reservation.getReservationDate())
-                        .status(reservation.getStatus())
-                        .build())
-                .collect(Collectors.toList());
+    public List<Reservation> getReservations() {
+        return reservationRepository.findAll();
     }
 }

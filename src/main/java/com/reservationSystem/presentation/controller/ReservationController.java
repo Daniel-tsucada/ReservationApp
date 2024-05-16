@@ -43,7 +43,7 @@ public class ReservationController {
 
     @GetMapping("/all")
     public ResponseEntity<List<ReservationResponse>> getReservations() {
-        List<ReservationOutput> reservationOutputs = reservationService.getReservationOutputs();
-        return reservationPresenter.present(reservationOutputs);
+        List<Reservation> reservations = reservationService.getReservations();
+        return reservationPresenter.present(reservations);
     }
 }
